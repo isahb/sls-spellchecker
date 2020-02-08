@@ -47,7 +47,7 @@
         </dependency>
         <dependency>
             <groupId>org.languagetool</groupId>
-            <artifactId>language-en</artifactId>
+            <artifactId>language-de</artifactId>
             <version>4.9-SNAPSHOT</version>
         </dependency>
         <dependency>
