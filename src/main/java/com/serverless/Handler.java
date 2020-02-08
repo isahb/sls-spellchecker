@@ -11,8 +11,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.languagetool.JLanguageTool;
 import org.languagetool.language.AmericanEnglish;
-import org.languagetool.language.German;
-import org.languagetool.language.GermanyGerman;
 import org.languagetool.rules.RuleMatch;
 
 import java.io.IOException;
@@ -27,7 +25,7 @@ public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayRe
 
     private static final Logger LOG = LogManager.getLogger(Handler.class);
     public static final Map<String, String> HEADERS = Collections.singletonMap("X-Powered-By", "Languagetool");
-    private JLanguageTool langTool = new JLanguageTool(new GermanyGerman());
+    private JLanguageTool langTool = new JLanguageTool(new AmericanEnglish());
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Override

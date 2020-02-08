@@ -47,8 +47,8 @@
         </dependency>
         <dependency>
             <groupId>org.languagetool</groupId>
-            <artifactId>language-de</artifactId>
-            <version>4.9-SNAPSHOT</version>
+            <artifactId>language-en</artifactId>
+            <version>4.8</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
