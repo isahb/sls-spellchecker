@@ -1,0 +1,27 @@
+service: language
+
+provider:
+  name: aws
+  runtime: java8
+
+package:
+  artifact: target/sls-spellchecker-1.0.0.jar
+
+functions:
+  checkSpelling:
+    handler: com.serverless.Handler
+    memorySize: 2048
+    events:
+      - http:
+          path: checkSpelling
+          method: POST
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
