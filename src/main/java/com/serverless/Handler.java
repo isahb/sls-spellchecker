@@ -24,6 +24,7 @@ import com.serverless.model.SpellCheckResult.SpellCheckSuggestion;
 public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
 
     private static final Logger LOG = LogManager.getLogger(Handler.class);
+    private static final int CHARACTER_LIMIT = 512;
     public static final Map<String, String> HEADERS = Collections.singletonMap("X-Powered-By", "Languagetool");
     private JLanguageTool langTool = new JLanguageTool(new AmericanEnglish());
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -35,7 +36,7 @@ public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayRe
             String bodyJson = input.getOrDefault("body", "{}").toString();
             Map<String, String> requestBody = objectMapper.readerFor(Map.class).readValue(bodyJson);
             String text = requestBody.get("text");
-            if (text == null) {
+            if (text == null || text.length() > CHARACTER_LIMIT) {
                 return ApiGatewayResponse.builder().setStatusCode(400).setHeaders(HEADERS).build();
             }
             List<RuleMatch> matches = langTool.check(text);

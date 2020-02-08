@@ -1,6 +1,8 @@
 # sls-spellchecker
 **A Lambda wrapper of [LanguageTool](https://languagetool.org/).**
- 
+
+Accepts max 512 character texts.
+
 The sample uses `AmericanEnglish` but others can be included easily by adding the necessary dependency in the pom.xml, for example for German language spoken in Germany:
 
     <dependency>
@@ -50,5 +52,8 @@ To deploy with Servlerless Framework in Frankfurt region:
 ```
 **American English tests**
 
+
+
 Cold starts for American English with a 2GB configuration take up to 10s. 
+
 A warm lambda takes a few hundred milliseconds but never under 200 milliseconds in my tests.
