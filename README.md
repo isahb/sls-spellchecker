@@ -1,5 +1,6 @@
 # sls-spellchecker
 **A Lambda wrapper of [LanguageTool](https://languagetool.org/).**
+[![Build Status](https://travis-ci.org/isahb/sls-spellchecker.svg?branch=master)](https://travis-ci.org/isahb/sls-spellchecker)
 
 Accepts max 512 character texts.
 
