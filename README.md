@@ -18,6 +18,9 @@ In the `Handler`:
 
 Serverless Framework is used for deployment and an API Gateway stack with `checkSpelling` resource is created.
 
+To build: 
+> mvn clean install
+
 To deploy with Servlerless Framework in Frankfurt region:
 > sls deploy --region eu-central-1
 
