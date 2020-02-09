@@ -1,5 +1,6 @@
 # sls-spellchecker
 **A Lambda wrapper of [LanguageTool](https://languagetool.org/).**
+[object Object]
 
 Accepts max 512 character texts.
 
