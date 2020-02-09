@@ -7,7 +7,12 @@ import java.util.List;
  * isahb
  */
 public class SpellCheckResult {
+    private String error;
     private List<SpellCheckSuggestion> spellCheckSuggestions = new ArrayList<>();
+
+    public String getError() {
+        return error;
+    }
 
     public List<SpellCheckSuggestion> getSpellCheckSuggestions() {
         return spellCheckSuggestions;
@@ -15,6 +20,14 @@ public class SpellCheckResult {
 
     public void addCorrectionSuggestion(SpellCheckSuggestion spellCheckSuggestion) {
         this.spellCheckSuggestions.add(spellCheckSuggestion);
+    }
+
+    private SpellCheckResult(String errorMsg) {
+        this.error = errorMsg;
+    }
+
+    public static SpellCheckResult withError(String errorMsg) {
+        return new SpellCheckResult(errorMsg);
     }
 
     public SpellCheckResult() {
