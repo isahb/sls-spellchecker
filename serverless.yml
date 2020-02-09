@@ -11,6 +11,7 @@ functions:
   checkSpelling:
     handler: com.serverless.Handler
     memorySize: 2048
+    timeout: 10
     events:
       - http:
           path: checkSpelling
