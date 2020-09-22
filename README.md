@@ -2,7 +2,7 @@
 **A Lambda wrapper of [LanguageTool](https://languagetool.org/).**
 [![Build Status](https://travis-ci.org/isahb/sls-spellchecker.svg?branch=master)](https://travis-ci.org/isahb/sls-spellchecker)
 
-Accepts max 1024 character texts.
+Limit set to max 1024 character texts. (`com.isahb.slsspellchecker.Handler.CHARACTER_LIMIT`)
 
 The sample uses `AmericanEnglish` but others can be included easily by adding the necessary dependency in the pom.xml, for example for German language spoken in Germany:
 
@@ -25,33 +25,81 @@ To deploy with Servlerless Framework in Frankfurt region:
 > sls deploy --region eu-central-1
 
 
-**Example request/response format**
 
-   
+
+CURL (replace `api-gateway-id` with your generated id after stack is deployed)
+
+``
+    curl --location --request POST 'https://[api-gateway-id].execute-api.eu-central-1.amazonaws.com/dev/checkSpelling' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "text": "Please not that this sentence has erors"
+    }'
+``
+
+** Request/Response format**
 ```
 {
-   	"text": "The text to chek for spelling"
+   "text": "Please not that this sentence has erors"
 }
 ```
 ```
 {
-  "spellCheckSuggestions": [
-    {
-      "startPos": 12,
-      "endPos": 16,
-      "message": "Possible spelling mistake found",
-      "suggestedReplacements": [
-        "check",
-        "Chen",
-        "cheek",
-        "chef",
-        "Che",
-        "chew",
-        "CHK",
-        "chem"
-      ]
-    }
-  ]
+    "error": null,
+    "spellCheckSuggestions": [
+        {
+            "startPos": 7,
+            "endPos": 10,
+            "message": "Did you mean <suggestion>note</suggestion>?",
+            "shortMessage": "Possible typo",
+            "type": "Other",
+            "suggestedReplacements": [
+                "note"
+            ],
+            "suggestionMeta": {
+                "categoryId": "TYPOS",
+                "categoryName": "Possible Typo",
+                "correctExamples": [],
+                "incorrectExamples": [
+                    {
+                        "example": "Please <marker>not</marker> that saying “Open Source” does not mean very much.",
+                        "corrections": [
+                            "note"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "startPos": 34,
+            "endPos": 39,
+            "message": "Possible spelling mistake found.",
+            "shortMessage": "Spelling mistake",
+            "type": "Other",
+            "suggestedReplacements": [
+                "errors",
+                "Eros",
+                "errs"
+            ],
+            "suggestionMeta": {
+                "categoryId": "TYPOS",
+                "categoryName": "Possible Typo",
+                "correctExamples": [
+                    {
+                        "example": "This <marker>sentence</marker> contains a spelling mistake."
+                    }
+                ],
+                "incorrectExamples": [
+                    {
+                        "example": "This <marker>sentenc</marker> contains a spelling mistake.",
+                        "corrections": [
+                            "sentence"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
 }
 ```
 **American English tests**

@@ -1,4 +1,4 @@
-package com.serverless.model;
+package com.isahb.slsspellchecker.model;
 
 import java.util.Map;
 

@@ -5,11 +5,11 @@ provider:
   runtime: java8
 
 package:
-  artifact: target/sls-spellchecker-1.0.0.jar
+  artifact: target/sls-spellchecker-1.0.1.jar
 
 functions:
   checkSpelling:
-    handler: com.serverless.Handler
+    handler: com.isahb.slsspellchecker.Handler
     memorySize: 2048
     timeout: 10
     events:

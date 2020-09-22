@@ -5,7 +5,7 @@
     <groupId>com.serverless</groupId>
     <artifactId>sls-spellchecker</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>Serverless SpellChecker </name>
 
     <properties>
@@ -33,22 +33,28 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.9.10</version>
+            <version>2.11.2</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.10.3</version>
+            <version>2.11.2</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.9.10</version>
+            <version>2.11.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20200518</version>
+        </dependency>
+
         <dependency>
             <groupId>org.languagetool</groupId>
             <artifactId>language-en</artifactId>
-            <version>4.8</version>
+            <version>5.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.scala-lang</groupId>
