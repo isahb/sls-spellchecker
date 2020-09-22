@@ -11,7 +11,7 @@ functions:
   checkSpelling:
     handler: com.isahb.slsspellchecker.Handler
     memorySize: 2048
-    timeout: 10
+    timeout: 60
     events:
       - http:
           path: checkSpelling
